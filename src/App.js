@@ -1,26 +1,42 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react'
+import Filter from './Components/Filter'
+import axios from 'axios'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () => {
+
+const [countries, setCountries] = useState([])
+const [filter, setFilter] = useState('')
+
+const hook = () => {
+  console.log('effect')
+  axios
+    .get('https://restcountries.eu/rest/v2/all')
+    .then(response => {
+      console.log('promise fulfilled')
+      setFilter(response.data)
+    })
 }
 
-export default App;
+useEffect(hook, [])
+
+const showFilterPerson = () => {
+  if (filter) {
+    return countries.filter(el => el.name.includes(filter)).map(countrie => 
+      <p> {countrie.name} </p>)
+  }
+}
+
+  return(
+    <div>
+      <Filter 
+      filter={filter}
+
+      />
+      <div>
+        {showFilterPerson()}
+      </div>
+    </div>
+  )
+}
+
+export default App
