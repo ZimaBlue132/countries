@@ -14,25 +14,29 @@ const hook = () => {
     .then(response => {
       console.log('promise fulfilled')
       setCountries(response.data)
-      console.log(countries.name)
     })
 }
 
 useEffect(hook, [])
 
 const showFilterCountries = () => {
-  if (filter) {
-    return countries.filter(el => el.name.includes(filter)).map(countrie => 
-      <p key={countrie.numericCode}> {countrie.name} </p>)
+    if (filter) {     
+      const liste = countries.filter(el => el.name.includes(filter)).map(countrie => 
+        <p key={countrie.numericCode}> {countrie.name} </p>)
+      console.log(liste.length)
+      if(liste.length < 10){
+        return liste
+      } else {
+        return <p>Diese liste ist zu lang Spezifizire dein Sucheingabe</p>
+      }
+    }
   }
-}
 
   return(
     <div>
       <Filter 
       filter={filter}
       setFilter={setFilter}
-
       />
       <div>
         {showFilterCountries()}
