@@ -19,10 +19,14 @@ const hook = () => {
 
 useEffect(hook, [])
 
+
 const showFilterCountries = () => {
     if (filter) {     
       const liste = countries.filter(el => el.name.includes(filter)).map(countrie => 
-        <p key={countrie.numericCode}> {countrie.name} </p>)
+            <p key={countrie.numericCode}>
+              {countrie.name} 
+            </p>               
+        )
       console.log(liste.length)
       if(liste.length < 10){
         return liste
