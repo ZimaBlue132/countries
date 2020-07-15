@@ -23,7 +23,7 @@ useEffect(hook, [])
 const showFilterCountries = () => {
   if (filter) {
     return countries.filter(el => el.name.includes(filter)).map(countrie => 
-      <p> {countrie.name} </p>)
+      <p key={countrie.numericCode}> {countrie.name} </p>)
   }
 }
 
