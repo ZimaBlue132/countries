@@ -13,13 +13,14 @@ const hook = () => {
     .get('https://restcountries.eu/rest/v2/all')
     .then(response => {
       console.log('promise fulfilled')
-      setFilter(response.data)
+      setCountries(response.data)
+      console.log(countries.name)
     })
 }
 
 useEffect(hook, [])
 
-const showFilterPerson = () => {
+const showFilterCountries = () => {
   if (filter) {
     return countries.filter(el => el.name.includes(filter)).map(countrie => 
       <p> {countrie.name} </p>)
@@ -30,10 +31,11 @@ const showFilterPerson = () => {
     <div>
       <Filter 
       filter={filter}
+      setFilter={setFilter}
 
       />
       <div>
-        {showFilterPerson()}
+        {showFilterCountries()}
       </div>
     </div>
   )
