@@ -27,14 +27,35 @@ const showFilterCountries = () => {
               {countrie.name} 
             </p>               
         )
+      const solo = countries.filter(el => el.name.includes(filter)).map(countrie => 
+        <div>
+          <h1 key={countrie.numericCode}>
+            {countrie.nativname} 
+          </h1> 
+          <p>capital: {countrie.capital}</p>
+          <p>population: {countrie.population}</p>
+          <div>
+            <h2>languages</h2>
+              <li>{countrie.languages[0].name}</li>
+            <div>
+                <img src={countrie.flag} alt="nichts" width="300" height="250"></img>
+            </div>
+          </div>
+        </div>              
+    )
       console.log(liste.length)
-      if(liste.length < 10){
-        return liste
-      } else {
-        return <p>Diese liste ist zu lang Spezifizire dein Sucheingabe</p>
+      if(liste.length === 1){
+        return solo
+        } else {
+          if(liste.length < 10){
+            return liste
+          } else {
+            return <p>Diese liste ist zu lang Spezifizire dein Sucheingabe</p>
+          }
+        }
       }
     }
-  }
+  
 
   return(
     <div>
