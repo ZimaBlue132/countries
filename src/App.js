@@ -19,17 +19,23 @@ const hook = () => {
 
 useEffect(hook, [])
 
+const test = () => {
+  return console.log('nice try')
+}
 
 const showFilterCountries = () => {
     if (filter) {     
       const liste = countries.filter(el => el.name.includes(filter)).map(countrie => 
-            <p key={countrie.numericCode}>
+          <div key={countrie.numericCode}> 
+            <p>
               {countrie.name} 
-            </p>               
+            </p>   
+      <input type="button" value='show'></input>
+         </div>           
         )
       const solo = countries.filter(el => el.name.includes(filter)).map(countrie => 
-        <div>
-          <h1 key={countrie.numericCode}>
+        <div key={countrie.numericCode}>
+          <h1>
             {countrie.nativname} 
           </h1> 
           <p>capital: {countrie.capital}</p>
@@ -38,7 +44,7 @@ const showFilterCountries = () => {
             <h2>languages</h2>
               <li>{countrie.languages[0].name}</li>
             <div>
-                <img src={countrie.flag} alt="nichts" width="300" height="250"></img>
+                <img src={countrie.flag} alt="schalte deine Bilder ein!" width="300" height="250"></img>
             </div>
           </div>
         </div>              
