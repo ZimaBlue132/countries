@@ -8,20 +8,14 @@ const [countries, setCountries] = useState([])
 const [filter, setFilter] = useState('')
 
 const hook = () => {
-  console.log('effect')
   axios
     .get('https://restcountries.eu/rest/v2/all')
     .then(response => {
-      console.log('promise fulfilled')
       setCountries(response.data)
     })
 }
 
 useEffect(hook, [])
-
-const test = () => {
-  return console.log('nice try')
-}
 
 const showFilterCountries = () => {
     if (filter) {     
@@ -30,7 +24,7 @@ const showFilterCountries = () => {
             <p>
               {countrie.name} 
             </p>   
-      <input type="button" value='show'></input>
+          <input type='button' onClick={() => test()} value="show"/>
          </div>           
         )
       const solo = countries.filter(el => el.name.includes(filter)).map(countrie => 
@@ -42,14 +36,15 @@ const showFilterCountries = () => {
           <p>population: {countrie.population}</p>
           <div>
             <h2>languages</h2>
-              <li>{countrie.languages[0].name}</li>
+              <ul>
+                {countrie.languages.map(language => <li key={language.name}> {language.name} </li>)}
+              </ul>
             <div>
-                <img src={countrie.flag} alt="schalte deine Bilder ein!" width="300" height="250"></img>
+                <img src={countrie.flag} alt="schalte deine Bilder ein!" height="250"></img>
             </div>
           </div>
         </div>              
     )
-      console.log(liste.length)
       if(liste.length === 1){
         return solo
         } else {
