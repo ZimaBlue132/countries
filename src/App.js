@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import Filter from './Components/Filter'
+import Country from './Components/Country'
 import axios from 'axios'
+
+
 
 const App = () => {
 
@@ -17,36 +20,21 @@ const hook = () => {
 
 useEffect(hook, [])
 
+
+
 const showFilterCountries = () => {
     if (filter) {     
-      const liste = countries.filter(el => el.name.includes(filter)).map(countrie => 
-          <div key={countrie.numericCode}> 
+      const liste = countries.filter(el => el.name.includes(filter)).map(country => 
+          <div key={country.numericCode}> 
             <p>
-              {countrie.name} 
+              {country.name} 
             </p>   
-          <input type='button' onClick={() => solo} value="show"/>
+          <input type='button' onClick={() => <Country countries={countries} filter={filter}/>} value="show"/>
          </div>           
         )
-      const solo = countries.filter(el => el.name.includes(filter)).map(countrie => 
-        <div key={countrie.numericCode}>
-          <h1>
-            {countrie.nativname} 
-          </h1> 
-          <p>capital: {countrie.capital}</p>
-          <p>population: {countrie.population}</p>
-          <div>
-            <h2>languages</h2>
-              <ul>
-                {countrie.languages.map(language => <li key={language.name}> {language.name} </li>)}
-              </ul>
-            <div>
-                <img src={countrie.flag} alt="schalte deine Bilder ein!" height="250"></img>
-            </div>
-          </div>
-        </div>              
-    )
+      
       if(liste.length === 1){
-        return solo
+        return 
         } else {
           if(liste.length < 10){
             return liste
