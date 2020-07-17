@@ -24,7 +24,7 @@ const showFilterCountries = () => {
             <p>
               {countrie.name} 
             </p>   
-          <input type='button' onClick={() => test()} value="show"/>
+          <input type='button' onClick={() => solo} value="show"/>
          </div>           
         )
       const solo = countries.filter(el => el.name.includes(filter)).map(countrie => 
