@@ -34,7 +34,10 @@ const showFilterCountries = () => {
         )
       
       if(liste.length === 1){
-        return <Country/>
+        return <Country
+              filter={filter}
+              countries={countries}
+              />
         } else {
           if(liste.length < 10){
             return liste
