@@ -9,6 +9,7 @@ const App = () => {
 
 const [countries, setCountries] = useState([])
 const [filter, setFilter] = useState('')
+const [button, setButton] = useState(false)
 
 const hook = () => {
   axios
@@ -29,7 +30,7 @@ const showFilterCountries = () => {
             <p>
               {country.name} 
             </p>   
-          <input type='button' onClick={() => <Country countries={countries} filter={filter}/>} value="show"/>
+          <input type='button' onClick={() => setButton === false} value="show"/>
          </div>           
         )
       
