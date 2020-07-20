@@ -43,7 +43,7 @@ const showFilterCountries = () => {
           </div>
         </div>              
     )
-      console.log(liste.length)
+
       if(liste.length === 1){
         return solo
         } else {
