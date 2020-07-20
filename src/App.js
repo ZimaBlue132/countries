@@ -33,7 +33,7 @@ const showFilterCountries = () => {
           <input type='button' onClick={() => setButton === false} value="show"/>
          </div>           
         )
-      if(button === true){
+
       if(liste.length === 1){
         return <Country
               filter={filter}
@@ -52,7 +52,6 @@ const showFilterCountries = () => {
                   countires={countries}
         />
       }
-    }
     }
   
 
