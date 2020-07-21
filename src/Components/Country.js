@@ -25,11 +25,13 @@ const Country = ({country, listView}) => {
           {country.languages.map(language => <li key={language.name}> {language.name} </li>)}
         </ul>
         <img src={country.flag} alt="schalte deine Bilder ein!" height="250"></img>
-        {
-          listView
-          ? <button onClick={() => setShowCompact(true)}>close</button>
-          : null
-        }
+        <div>
+          {
+            listView
+            ? <button onClick={() => setShowCompact(true)}>close</button>
+            : null
+          }
+        </div>
       </div>              
     )
   }
