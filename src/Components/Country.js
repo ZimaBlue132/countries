@@ -32,6 +32,8 @@ const Country = ({country, listView}) => {
             : null
           }
         </div>
+        <h2>Weather in {country.capital}</h2>
+        <p>temperature: </p>
       </div>              
     )
   }
