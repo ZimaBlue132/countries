@@ -1,9 +1,10 @@
 import React, {useState} from 'react'
 
 const Country = ({country, listView}) => {
-  console.log('rendere Country mit listView', listView)
 
   const [showCompact, setShowCompact] = useState(listView)
+
+  const api_key = process.env.React_APP_API_KEY
 
   if (showCompact) {
     return (
@@ -33,7 +34,8 @@ const Country = ({country, listView}) => {
           }
         </div>
         <h2>Weather in {country.capital}</h2>
-        <p>temperature: </p>
+        <p>temperature: </p>'
+        <p>wind: </p>
       </div>              
     )
   }
