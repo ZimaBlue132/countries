@@ -23,8 +23,12 @@ const Weather = ({country}) => {
     } 
     return(
         <div>
+            <hr/>
             <p>temperature: {showWeather.temperature}</p>
-            <p>wind: {showWeather.wind_degree}</p>
+            <p>feelslike: {showWeather.feelslike}</p>
+            <p>wind: {showWeather.wind_speed}</p>
+            <p>wind direction: {showWeather.wind_dir}</p>    
+            <hr/>
         </div>
     )
 }
