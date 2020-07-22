@@ -19,7 +19,7 @@ const Weather = ({country}) => {
   useEffect(hook, [country.name])
 
     if(!showWeather) {
-        return null
+        return <p>Loading...</p>
     } 
     return(
         <div>

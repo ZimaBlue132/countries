@@ -19,6 +19,7 @@ const Country = ({country, listView}) => {
         <h1>
           {country.nativeName} 
         </h1> 
+        <hr/>
         <p>capital: {country.capital}</p>
         <p>population: {country.population}</p>
         <h2>languages</h2>
@@ -26,6 +27,10 @@ const Country = ({country, listView}) => {
           {country.languages.map(language => <li key={language.name}> {language.name} </li>)}
         </ul>
         <img src={country.flag} alt="schalte deine Bilder ein!" height="200"></img>
+        <hr/>
+        <h2>Weather in {country.capital}</h2>
+        <Weather
+        country={country}/>
         <div>
           {
             listView
@@ -33,9 +38,6 @@ const Country = ({country, listView}) => {
             : null
           }
         </div>
-        <h2>Weather in {country.capital}</h2>
-        <Weather
-        country={country}/>
       </div>              
     )
   }
