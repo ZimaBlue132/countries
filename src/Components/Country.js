@@ -1,27 +1,10 @@
-import React, {useState, useEffect} from 'react'
-import axios from 'axios'
+import React, {useState} from 'react'
+import Weather from './Weather'
+
 
 const Country = ({country, listView}) => {
 
   const [showCompact, setShowCompact] = useState(listView)
-  const [showWeather, setWeather] = useState(null)
-
-  const api_key = process.env.REACT_APP_API_KEY
-  console.log(api_key)
-  
-  
-
-  const hook = () => {
-    axios
-      .get(`http://api.weatherstack.com/current?access_key=${api_key}&query=${country.name}`)
-      .then(response => {
-        console.log(response)
-        setWeather(response.data.current)
-        console.log(showWeather)
-      })
-  }
-
-  useEffect(hook, [country.name])
 
   if (showCompact) {
     return (
@@ -51,8 +34,8 @@ const Country = ({country, listView}) => {
           }
         </div>
         <h2>Weather in {country.capital}</h2>
-        <p>temperature: </p>'
-        <p>wind: </p>
+        <Weather
+        country={country}/>
       </div>              
     )
   }
